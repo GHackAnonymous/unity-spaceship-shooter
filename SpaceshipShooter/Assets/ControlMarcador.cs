@@ -12,19 +12,64 @@ public class ControlMarcador : MonoBehaviour
 
 	// Referencia para el resto de objetos
 	public GameObject marcador;
+	public GameObject vida;
+	// Referencia para las vidas
+	public GameObject vida1;
+	public GameObject vida2;
+	public GameObject vida3;
+	public GameObject vida4;
+	public GameObject vida5;
 
 	// Actualizar el marcador
 	void Update ()
 	{
 		// Localizamos el componente del UI
 		Text t = marcador.GetComponent<Text> ();
+		Text v = vida.GetComponent<Text> ();
 
 		// Actualizamos el marcador
-		t.text = "Puntos: "+puntos.ToString () + "\n";
-		t.text += "Vidas: "+vidas.ToString () + "\n";
+		t.text = "Puntos: " + puntos.ToString () + "\n";
+		// v.text = "Vidas: " + vidas.ToString () + "\n";
+		v.text = "Vidas:";
 
-		// Si el número de vidas llega a 0, reiniciamos el juego
-		if(vidas == 0)
-			Application.LoadLevel(Application.loadedLevel);
+		// switch VIDAS
+		switch (vidas) {
+		case 0:
+			vida1.SetActive (false);
+			// Si el número de vidas llega a 0, GameOver
+			Application.LoadLevel (2);
+			break;
+		case 1:
+			vida2.SetActive (false);
+			break;
+		case 2:
+			vida3.SetActive (false);
+			break;
+		case 3:
+			vida4.SetActive (false);
+			break;
+		case 4:
+			vida5.SetActive (false);
+			break;
+		case 5:
+			vida1.SetActive (true);
+			vida2.SetActive (true);
+			vida3.SetActive (true);
+			vida4.SetActive (true);
+			vida5.SetActive (true);
+			break;
+		default:
+			vida1.SetActive (true);
+			vida2.SetActive (true);
+			vida3.SetActive (true);
+			vida4.SetActive (true);
+			vida5.SetActive (true);
+			break;
+
+		}
+
+
+
+
 	}
 }

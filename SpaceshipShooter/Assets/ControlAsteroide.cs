@@ -33,7 +33,15 @@ public class ControlAsteroide : MonoBehaviour
 					marcador.GetComponent<ControlMarcador> ().vidas -= 1;
 				}
 			}
-		}
+		} 
+//		else {
+//			if (coll.gameObject.tag == "escudo"){
+//				// choca con el escudo
+//				if (coll.gameObject.GetComponent<CircleCollider2D>().enabled == true){
+//
+//				}
+//			}
+//		}
 
 		// El asteroide se destruye
 		GetComponent<Renderer> ().enabled = false;

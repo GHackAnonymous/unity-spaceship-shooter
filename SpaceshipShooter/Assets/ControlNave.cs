@@ -8,6 +8,13 @@ public class ControlNave : MonoBehaviour
 
 	// Acceso al prefab Disparo
 	public Rigidbody2D disparo;
+
+	public GameObject escudo;
+
+
+	void Start(){
+	 
+		}
 	
 	// Hacemos copias del prefab del disparo y las lanzamos
 	void Disparar ()

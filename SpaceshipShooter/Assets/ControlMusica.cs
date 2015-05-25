@@ -7,13 +7,14 @@ public class ControlMusica : MonoBehaviour
 	public GameObject marcador;
 	private AudioSource source;
 	private int vida;
-	// Use this for initialization
+
+	// Localizo el sonido para marcar la velocidad inicial
 	void Awake ()
 	{
 		source = GetComponent<AudioSource> ();
-		source.pitch = 0.75f;
+		source.pitch = 0.80f;
 	}
-
+	// localizo el marcador para poder acceder al numero de vidas restantes
 	void Start ()
 	{
 		marcador = GameObject.Find ("Marcador");
@@ -26,7 +27,7 @@ public class ControlMusica : MonoBehaviour
 		// switch para acelerar la musica al restar vidas
 		switch (vida) {
 		case 1:
-			source.pitch = 1.5f;
+			source.pitch = 1.2f;
 			break;
 		case 2:
 			source.pitch = 1.02f;
@@ -38,7 +39,7 @@ public class ControlMusica : MonoBehaviour
 			source.pitch = 0.97f;
 			break;
 		case 5:
-			source.pitch = 0.95f;
+			source.pitch = 0.90f;
 			break;
 		}
 	}

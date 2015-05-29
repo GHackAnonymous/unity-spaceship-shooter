@@ -13,7 +13,7 @@ public class ControlNave : MonoBehaviour
 
 
 	void Start(){
-	//	escudo.GetComponent<SpriteRenderer> ().enabled = false;
+
 		}
 	
 	// Hacemos copias del prefab del disparo y las lanzamos

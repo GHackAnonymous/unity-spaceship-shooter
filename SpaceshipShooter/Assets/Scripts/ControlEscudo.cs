@@ -17,13 +17,20 @@ public class ControlEscudo : MonoBehaviour
 
 	// estado del escudo
 	private bool activo=false;
+	// sonido del ecudo
+	private AudioSource source;
+	public	AudioClip Electro;
 
 	// Use this for initialization
 	void Start ()
 	{
+		// estado inicial
 		activo = false;
 		escudo.GetComponent<SpriteRenderer> ().enabled = false;
 		escudo.GetComponent<Collider2D> ().enabled = false;
+		//
+		source = GetComponent<AudioSource> ();
+		source.clip = Electro;
 	}
 	
 	// Update is called once per frame
@@ -37,6 +44,7 @@ public class ControlEscudo : MonoBehaviour
 			if ((puntos % 1000) == 0) {
 				if (!activo) {
 					// si el escudo esta desactivado
+					source.Play();
 					TiempoInicio ();
 					activo = true;
 					escudo.GetComponent<SpriteRenderer> ().enabled = true;
@@ -52,18 +60,25 @@ public class ControlEscudo : MonoBehaviour
 		if (activo) {
 			if (tActual - tInicio < tEscudo) {
 				// si no han trancurrido
-				escudo.GetComponent<SpriteRenderer> ().enabled = true;
-				escudo.GetComponent<Collider2D> ().enabled = true;
+//				escudo.GetComponent<SpriteRenderer> ().enabled = true;
+//				escudo.GetComponent<Collider2D> ().enabled = true;
 			} else {
 				activo = false;
 				escudo.GetComponent<SpriteRenderer> ().enabled = false;
-				escudo.GetComponent<Collider2D> ().enabled = false;
+				escudo.GetComponent<CircleCollider2D> ().enabled = false;
+				FinEscudo();
+				source.Stop();
 			}
 
 		}
 	}
 	void TiempoInicio ()
 	{
+
 		tInicio = Time.time;
+	}
+	void FinEscudo(){
+		GetComponent<Animation> ().enabled = false;
+
 	}
 }

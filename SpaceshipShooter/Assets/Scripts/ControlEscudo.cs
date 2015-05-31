@@ -11,13 +11,18 @@ public class ControlEscudo : MonoBehaviour
 	// variables para el tiempo
 	public float tInicio;
 	public float tActual;
-	public float tEscudo = 8f; // duracion del escudo
+
+	// duracion del escudo
+	public float tEscudo = 10f; 
+
+	// para controlar los objetos
 	public GameObject marcador;
 	public GameObject escudo;
 
 	// estado del escudo
-	private bool activo=false;
-	// sonido del ecudo
+	private bool activo = false;
+
+	// sonido del escudo
 	private AudioSource source;
 	public	AudioClip Electro;
 
@@ -26,9 +31,9 @@ public class ControlEscudo : MonoBehaviour
 	{
 		// estado inicial
 		activo = false;
-		escudo.GetComponent<SpriteRenderer> ().enabled = false;
-		escudo.GetComponent<Collider2D> ().enabled = false;
-		//
+		OffEscudo ();
+
+		// asigno el sonido del escudo
 		source = GetComponent<AudioSource> ();
 		source.clip = Electro;
 	}
@@ -44,11 +49,11 @@ public class ControlEscudo : MonoBehaviour
 			if ((puntos % 1000) == 0) {
 				if (!activo) {
 					// si el escudo esta desactivado
-					source.Play();
+					source.pitch=2f;
+					source.Play ();
 					TiempoInicio ();
 					activo = true;
-					escudo.GetComponent<SpriteRenderer> ().enabled = true;
-					escudo.GetComponent<Collider2D> ().enabled = true;
+					OnEscudo ();
 				}
 			}
 		}
@@ -60,25 +65,32 @@ public class ControlEscudo : MonoBehaviour
 		if (activo) {
 			if (tActual - tInicio < tEscudo) {
 				// si no han trancurrido
-//				escudo.GetComponent<SpriteRenderer> ().enabled = true;
-//				escudo.GetComponent<Collider2D> ().enabled = true;
+
+
 			} else {
 				activo = false;
-				escudo.GetComponent<SpriteRenderer> ().enabled = false;
-				escudo.GetComponent<CircleCollider2D> ().enabled = false;
-				FinEscudo();
-				source.Stop();
+				OffEscudo ();
+				source.Stop ();
 			}
 
 		}
 	}
+
 	void TiempoInicio ()
 	{
-
+		// recogo el tiempo cuando se activa el escudo
 		tInicio = Time.time;
 	}
-	void FinEscudo(){
-		GetComponent<Animation> ().enabled = false;
 
+	void OnEscudo ()
+	{
+		escudo.GetComponent<SpriteRenderer> ().enabled = true;
+		escudo.GetComponent<Collider2D> ().enabled = true;
+	}
+
+	void OffEscudo ()
+	{
+		escudo.GetComponent<SpriteRenderer> ().enabled = false;
+		escudo.GetComponent<CircleCollider2D> ().enabled = false;
 	}
 }

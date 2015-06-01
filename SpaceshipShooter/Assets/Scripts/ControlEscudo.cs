@@ -18,6 +18,7 @@ public class ControlEscudo : MonoBehaviour
 	// para controlar los objetos
 	public GameObject marcador;
 	public GameObject escudo;
+	public Animator coraza;
 
 	// estado del escudo
 	private bool activo = false;
@@ -32,6 +33,7 @@ public class ControlEscudo : MonoBehaviour
 		// estado inicial
 		activo = false;
 		OffEscudo ();
+		coraza = escudo.GetComponent<Animator> ();
 
 		// asigno el sonido del escudo
 		source = GetComponent<AudioSource> ();
@@ -49,7 +51,7 @@ public class ControlEscudo : MonoBehaviour
 			if ((puntos % 1000) == 0) {
 				if (!activo) {
 					// si el escudo esta desactivado
-					source.pitch=2f;
+					source.pitch=3f;
 					source.Play ();
 					TiempoInicio ();
 					activo = true;
@@ -71,11 +73,11 @@ public class ControlEscudo : MonoBehaviour
 				activo = false;
 				OffEscudo ();
 				source.Stop ();
+
 			}
 
 		}
 	}
-
 	void TiempoInicio ()
 	{
 		// recogo el tiempo cuando se activa el escudo
@@ -85,7 +87,7 @@ public class ControlEscudo : MonoBehaviour
 	void OnEscudo ()
 	{
 		escudo.GetComponent<SpriteRenderer> ().enabled = true;
-		escudo.GetComponent<Collider2D> ().enabled = true;
+		escudo.GetComponent<CircleCollider2D> ().enabled = true;
 	}
 
 	void OffEscudo ()
@@ -93,4 +95,5 @@ public class ControlEscudo : MonoBehaviour
 		escudo.GetComponent<SpriteRenderer> ().enabled = false;
 		escudo.GetComponent<CircleCollider2D> ().enabled = false;
 	}
+
 }

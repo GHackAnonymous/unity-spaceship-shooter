@@ -29,8 +29,8 @@ public class ControlAsteroide : MonoBehaviour
 			coll.gameObject.GetComponent<Collider2D> ().enabled = false;
 		} else {
 			if (coll.gameObject.tag == "escudo") {
-				// choca con el escudo
-				
+				// choca con el escudo,resto 100 puntos
+				marcador.GetComponent<ControlMarcador> ().puntos -= puntos;
 			} else {
 
 				if (coll.gameObject.tag == "nave") {

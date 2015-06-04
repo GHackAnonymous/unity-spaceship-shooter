@@ -6,15 +6,19 @@ public class ControlNave : MonoBehaviour
 	public float velocidadNave = 20f;
 	public float velocidadDisparo = 10f;
 
+	// para delimitar la escena
+	public float limiteI;
+	public float limiteD;
+	public float horizonte;
+
 	// Acceso al prefab Disparo
 	public Rigidbody2D disparo;
-
 	public GameObject escudo;
 
+	void Start ()
+	{
 
-	void Start(){
-
-		}
+	}
 	
 	// Hacemos copias del prefab del disparo y las lanzamos
 	void Disparar ()
@@ -34,15 +38,29 @@ public class ControlNave : MonoBehaviour
 
 	void Update ()
 	{
+		horizonte = Camera.main.orthographicSize * Screen.width / Screen.height;
+		// Izquierda
+		limiteI = (horizonte * -1) + 1;
+		limiteD = (horizonte) - 1;
+
 		// Izquierda
 		if (Input.GetKey (KeyCode.LeftArrow)) {
-			transform.Translate (Vector3.left * velocidadNave * Time.deltaTime);
+			if (transform.position.x >= limiteI) {
+				transform.Translate (Vector3.left * velocidadNave * Time.deltaTime);
+			} else {
+				transform.Translate (Vector3.left * velocidadNave * Time.deltaTime * 0);
+			}
 		}
 
 		// Derecha
 		if (Input.GetKey (KeyCode.RightArrow)) {
-			transform.Translate (Vector3.right * velocidadNave * Time.deltaTime);
+			if (transform.position.x <= limiteD) {
+				transform.Translate (Vector3.right * velocidadNave * Time.deltaTime);
+			} else {
+				transform.Translate (Vector3.right * velocidadNave * Time.deltaTime * 0);
+			}
 		}
+
 
 		// Disparo
 		if (Input.GetKeyDown (KeyCode.Space)) {

@@ -68,12 +68,13 @@ public class ControlMarcador : MonoBehaviour
 
 		}
 
-		// VIDAS EXTRAS cada 2000 puntos una vida extra
-		if (puntos>= 2000 ) {
-			if ((puntos%2000)==0) {
-				vidas = vidas + 1;
+//		 VIDAS EXTRAS cada 2000 puntos una vida extra
+		if (puntos >= 12000) {
+			if (vidas < 5) {
+				if ((puntos % 12000) == 0) {
+					vidas = vidas + 1;
+				}
 			}
-
 		}
 
 

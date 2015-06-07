@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 602f0eb938b185248991cfa4ad6e449b
+timeCreated: 1433689881
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - izquierda: {instanceID: 0}
+  - derecha: {instanceID: 0}
+  - tiro: {instanceID: 0}
+  - disparo: {fileID: 5004506, guid: ba75032ba2f514293a9724f2a023e194, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

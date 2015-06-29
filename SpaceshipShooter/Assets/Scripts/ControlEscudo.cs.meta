@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7dd90a4ebce72c54d8a06b2e3f3d64f1
+timeCreated: 1433027691
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - marcador: {instanceID: 0}
+  - escudo: {instanceID: 0}
+  - Electro: {fileID: 8300000, guid: 32a2138ce53a73641a27b1c58104bd8d, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
